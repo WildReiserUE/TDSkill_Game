@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{27F8587D-4BDF-33B8-BD51-E4AFD7B02B14}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "TDSKill_Game",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

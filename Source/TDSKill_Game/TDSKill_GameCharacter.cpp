@@ -35,7 +35,7 @@ ATDSKill_GameCharacter::ATDSKill_GameCharacter()
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->SetUsingAbsoluteRotation(true); // Don't want arm to rotate when character does
 	CameraBoom->TargetArmLength = 800.f;
-	CameraBoom->SetRelativeRotation(FRotator(-65.f, 0.f, 0.f));
+	CameraBoom->SetRelativeRotation(FRotator(-75.f, 0.f, 0.f));
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
 
 	// Create a camera...
@@ -118,8 +118,8 @@ void ATDSKill_GameCharacter::MovementTick(float DeltaSeconds)
 	if(myController)
 	{
 		FHitResult ResultHit;
-		myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery6, false, ResultHit);
-		SetActorRotation(FQuat(FRotator(0.0,UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw,0.0)));
+		myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery5, false, ResultHit);
+		float FindRorationResultYaw = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw;
+		SetActorRotation(FQuat(FRotator(0.0, FindRorationResultYaw,0.0)));
 	}
 }
-

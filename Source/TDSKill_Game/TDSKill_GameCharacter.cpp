@@ -118,7 +118,7 @@ void ATDSKill_GameCharacter::MovementTick(float DeltaSeconds)
 	if(myController)
 	{
 		FHitResult ResultHit;
-		myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery5, false, ResultHit);
+		myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, ResultHit);
 		float FindRorationResultYaw = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw;
 		SetActorRotation(FQuat(FRotator(0.0, FindRorationResultYaw,0.0)));
 	}

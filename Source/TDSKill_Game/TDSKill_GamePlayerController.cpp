@@ -18,10 +18,10 @@ void ATDSKill_GamePlayerController::PlayerTick(float DeltaTime)
 	Super::PlayerTick(DeltaTime);
 
 	// keep updating the destination every tick while desired
-	if (bMoveToMouseCursor)
-	{
-		MoveToMouseCursor();
-	}
+	// if (bMoveToMouseCursor)
+	// {
+	// 	MoveToMouseCursor();
+	// }
 }
 
 void ATDSKill_GamePlayerController::SetupInputComponent()
@@ -29,22 +29,22 @@ void ATDSKill_GamePlayerController::SetupInputComponent()
 	// set up gameplay key bindings
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("SetDestination", IE_Pressed, this, &ATDSKill_GamePlayerController::OnSetDestinationPressed);
-	InputComponent->BindAction("SetDestination", IE_Released, this, &ATDSKill_GamePlayerController::OnSetDestinationReleased);
-
-	// support touch devices 
-	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &ATDSKill_GamePlayerController::MoveToTouchLocation);
-	InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &ATDSKill_GamePlayerController::MoveToTouchLocation);
-
-	InputComponent->BindAction("ResetVR", IE_Pressed, this, &ATDSKill_GamePlayerController::OnResetVR);
+	// InputComponent->BindAction("SetDestination", IE_Pressed, this, &ATDSKill_GamePlayerController::OnSetDestinationPressed);
+	// InputComponent->BindAction("SetDestination", IE_Released, this, &ATDSKill_GamePlayerController::OnSetDestinationReleased);
+	//
+	// // support touch devices 
+	// InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &ATDSKill_GamePlayerController::MoveToTouchLocation);
+	// InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &ATDSKill_GamePlayerController::MoveToTouchLocation);
+	//
+	// InputComponent->BindAction("ResetVR", IE_Pressed, this, &ATDSKill_GamePlayerController::OnResetVR);
 }
 
-void ATDSKill_GamePlayerController::OnResetVR()
-{
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
-}
+// void ATDSKill_GamePlayerController::OnResetVR()
+// {
+// 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+// }
 
-void ATDSKill_GamePlayerController::MoveToMouseCursor()
+/*void ATDSKill_GamePlayerController::MoveToMouseCursor()
 {
 	if (UHeadMountedDisplayFunctionLibrary::IsHeadMountedDisplayEnabled())
 	{
@@ -68,9 +68,9 @@ void ATDSKill_GamePlayerController::MoveToMouseCursor()
 			SetNewMoveDestination(Hit.ImpactPoint);
 		}
 	}
-}
+}*/
 
-void ATDSKill_GamePlayerController::MoveToTouchLocation(const ETouchIndex::Type FingerIndex, const FVector Location)
+/*void ATDSKill_GamePlayerController::MoveToTouchLocation(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	FVector2D ScreenSpaceLocation(Location);
 
@@ -82,9 +82,9 @@ void ATDSKill_GamePlayerController::MoveToTouchLocation(const ETouchIndex::Type 
 		// We hit something, move there
 		SetNewMoveDestination(HitResult.ImpactPoint);
 	}
-}
+}*/
 
-void ATDSKill_GamePlayerController::SetNewMoveDestination(const FVector DestLocation)
+/*void ATDSKill_GamePlayerController::SetNewMoveDestination(const FVector DestLocation)
 {
 	APawn* const MyPawn = GetPawn();
 	if (MyPawn)
@@ -97,16 +97,16 @@ void ATDSKill_GamePlayerController::SetNewMoveDestination(const FVector DestLoca
 			UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, DestLocation);
 		}
 	}
-}
+}*/
 
-void ATDSKill_GamePlayerController::OnSetDestinationPressed()
-{
-	// set flag to keep updating destination until released
-	bMoveToMouseCursor = true;
-}
+// void ATDSKill_GamePlayerController::OnSetDestinationPressed()
+// {
+// 	// set flag to keep updating destination until released
+// 	bMoveToMouseCursor = true;
+// }
 
-void ATDSKill_GamePlayerController::OnSetDestinationReleased()
-{
-	// clear flag to indicate we should stop updating the destination
-	bMoveToMouseCursor = false;
-}
+// void ATDSKill_GamePlayerController::OnSetDestinationReleased()
+// {
+// 	// clear flag to indicate we should stop updating the destination
+// 	bMoveToMouseCursor = false;
+// }
